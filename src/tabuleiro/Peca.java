@@ -1,4 +1,4 @@
-package tabuleirojogo;
+package tabuleiro;
 
 public class Peca {
 	
