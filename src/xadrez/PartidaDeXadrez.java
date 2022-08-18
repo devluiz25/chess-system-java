@@ -1,5 +1,7 @@
 package xadrez;
 
+import tabuleiro.Peca;
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 import xadrez.pecas.Bispo;
 import xadrez.pecas.Cavalo;
@@ -33,7 +35,7 @@ public class PartidaDeXadrez {
 	}
 
 	private void initialSetup() {
-		//PEÇAS BRANCAS
+		// PEÇAS BRANCAS
 		novaPosicaoPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
 		novaPosicaoPeca('d', 1, new Dama(tabuleiro, Cor.BRANCO));
 		novaPosicaoPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
@@ -50,9 +52,8 @@ public class PartidaDeXadrez {
 		novaPosicaoPeca('f', 2, new Peao(tabuleiro, Cor.BRANCO));
 		novaPosicaoPeca('g', 2, new Peao(tabuleiro, Cor.BRANCO));
 		novaPosicaoPeca('h', 2, new Peao(tabuleiro, Cor.BRANCO));
-	
-		
-		//PEÇAS PRETAS0
+
+		// PEÇAS PRETAS0
 		novaPosicaoPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
 		novaPosicaoPeca('d', 8, new Dama(tabuleiro, Cor.PRETO));
 		novaPosicaoPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
@@ -70,5 +71,26 @@ public class PartidaDeXadrez {
 		novaPosicaoPeca('g', 7, new Peao(tabuleiro, Cor.PRETO));
 		novaPosicaoPeca('h', 7, new Peao(tabuleiro, Cor.PRETO));
 
+	}
+
+	public PecaDeXadrez performanceMovimentoPeca(PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino) {
+		Posicao origem = posicaoOrigem.toPosicao();
+		Posicao destino = posicaoDestino.toPosicao();
+		validarPosicaoOrigem(origem);
+		Peca capturarPeca = fazerMovimento(origem, destino);
+		return (PecaDeXadrez) capturarPeca;
+	}
+
+	private Peca fazerMovimento(Posicao origem, Posicao destino) {
+		Peca p = tabuleiro.removerPeca(origem);
+		Peca pecaCapturada = tabuleiro.removerPeca(destino);
+		tabuleiro.localPeca(p, destino);
+		return pecaCapturada;
+	}
+
+	private void validarPosicaoOrigem(Posicao posicao) {
+		if (!tabuleiro.existePeca(posicao)) {
+			throw new ExcecaoXadrez("NAO HA PECA NA POSICAO DE ORIGEM!");
+		}
 	}
 }
