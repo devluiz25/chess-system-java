@@ -5,7 +5,7 @@ import tabuleiro.Tabuleiro;
 import xadrez.pecas.Bispo;
 import xadrez.pecas.Cavalo;
 import xadrez.pecas.Peao;
-import xadrez.pecas.Rainha;
+import xadrez.pecas.Dama;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
@@ -29,43 +29,46 @@ public class PartidaDeXadrez {
 		return mat;
 	}
 
+	private void novaPosicaoPeca(char coluna, int linha, PecaDeXadrez peca) {
+		tabuleiro.localPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+	}
+
 	private void initialSetup() {
 		// PEÇAS BRANCAS
-		tabuleiro.localPeca(new Torre(tabuleiro, Cor.BRANCO), new Posicao(7, 0));
-		tabuleiro.localPeca(new Torre(tabuleiro, Cor.BRANCO), new Posicao(7, 7));
-		tabuleiro.localPeca(new Bispo(tabuleiro, Cor.BRANCO), new Posicao(7, 2));
-		tabuleiro.localPeca(new Bispo(tabuleiro, Cor.BRANCO), new Posicao(7, 5));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, Cor.BRANCO), new Posicao(7, 1));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, Cor.BRANCO), new Posicao(7, 6));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 0));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 1));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 2));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 3));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 4));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 5));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 6));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, 7));
-		tabuleiro.localPeca(new Rei(tabuleiro, Cor.BRANCO), new Posicao(7, 4));
-		tabuleiro.localPeca(new Rainha(tabuleiro, Cor.BRANCO), new Posicao(7, 3));
+		novaPosicaoPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('d', 1, new Dama(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('b', 1, new Cavalo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('g', 1, new Cavalo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('a', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('b', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('c', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('d', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('e', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('f', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('g', 2, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('h', 2, new Peao(tabuleiro, Cor.BRANCO));
 
 		// PEÇAS PRETAS
-		tabuleiro.localPeca(new Rei(tabuleiro, Cor.PRETO), new Posicao(0, 4));
-		tabuleiro.localPeca(new Rainha(tabuleiro, Cor.PRETO), new Posicao(0, 3));
-		tabuleiro.localPeca(new Torre(tabuleiro, Cor.PRETO), new Posicao(0, 0));
-		tabuleiro.localPeca(new Torre(tabuleiro, Cor.PRETO), new Posicao(0, 7));
-		tabuleiro.localPeca(new Bispo(tabuleiro, Cor.PRETO), new Posicao(0, 2));
-		tabuleiro.localPeca(new Bispo(tabuleiro, Cor.PRETO), new Posicao(0, 5));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, Cor.PRETO), new Posicao(0, 1));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, Cor.PRETO), new Posicao(0, 6));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 0));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 1));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 2));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 3));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 4));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 5));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 6));
-		tabuleiro.localPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(1, 7));
-		
+		novaPosicaoPeca('e', 8, new Rei(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('d', 8, new Dama(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('a', 8, new Torre(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('h', 8, new Torre(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('c', 8, new Bispo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('f', 8, new Bispo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('b', 8, new Cavalo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('g', 8, new Cavalo(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('a', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('b', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('c', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('d', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('e', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('f', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('g', 7, new Peao(tabuleiro, Cor.BRANCO));
+		novaPosicaoPeca('h', 7, new Peao(tabuleiro, Cor.BRANCO));
 
 	}
 }

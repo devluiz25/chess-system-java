@@ -4,9 +4,9 @@ import tabuleiro.Tabuleiro;
 import xadrez.Cor;
 import xadrez.PecaDeXadrez;
 
-public class Rainha extends PecaDeXadrez{
+public class Dama extends PecaDeXadrez{
 	
-	public Rainha(Tabuleiro tabuleiro, Cor cor) {
+	public Dama(Tabuleiro tabuleiro, Cor cor) {
 		super(tabuleiro, cor);
 	}
 	

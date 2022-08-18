@@ -8,8 +8,7 @@ public class Tabuleiro {
 
 	public Tabuleiro(int linhas, int colunas) {
 		if (linhas < 1 || colunas < 1) {
-			throw new ExcecaoTabuleiro(
-					"ERRO AO CRIAR O TABULEIRO: É NECESSARIO QUE HAJA PELO MENOS UMA LINHA E UMA COLUNA!");
+			throw new ExcecaoTabuleiro("ERRO AO CRIAR O TABULEIRO: É NECESSARIO QUE HAJA PELO MENOS UMA LINHA E UMA COLUNA!");
 		}
 		this.linhas = linhas;
 		this.colunas = colunas;
@@ -33,7 +32,7 @@ public class Tabuleiro {
 
 	public Peca peca(Posicao posicao) {
 		if (!existePosicao(posicao)) {
-			throw new ExcecaoTabuleiro("NÃO EXISTE POSIÇÃO NO TABULEIRO!");
+			throw new ExcecaoTabuleiro("POSIÇÃO NÃO ENCONTRADA NO TABULEIRO!");
 		}
 		return pecas[posicao.getLinha()][posicao.getColuna()];
 	}
@@ -56,7 +55,7 @@ public class Tabuleiro {
 
 	public boolean existePeca(Posicao posicao) {
 		if (!existePosicao(posicao)) {
-			throw new ExcecaoTabuleiro("NÃO EXISTE POSIÇÃO NO TABULEIRO!");
+			throw new ExcecaoTabuleiro("POSIÇÃO NÃO ENCONTRADA NO TABULEIRO!");
 		}
 		return peca(posicao) != null;
 	}
