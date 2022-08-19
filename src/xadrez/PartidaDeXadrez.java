@@ -73,6 +73,12 @@ public class PartidaDeXadrez {
 
 	}
 
+	public boolean[][] possiveisMovimentos(PosicaoXadrez posicaoOrigem) {
+		Posicao posicao = posicaoOrigem.toPosicao();
+		validarPosicaoOrigem(posicao);
+		return tabuleiro.peca(posicao).movimentosPossiveis();
+	}
+
 	public PecaDeXadrez performanceMovimentoPeca(PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino) {
 		Posicao origem = posicaoOrigem.toPosicao();
 		Posicao destino = posicaoDestino.toPosicao();
@@ -93,13 +99,13 @@ public class PartidaDeXadrez {
 		if (!tabuleiro.existePeca(posicao)) {
 			throw new ExcecaoXadrez("NAO HA PECA NA POSICAO DE ORIGEM!");
 		}
-		if(!tabuleiro.peca(posicao).haAlgumMovimentoPossivel()) {
+		if (!tabuleiro.peca(posicao).haAlgumMovimentoPossivel()) {
 			throw new ExcecaoXadrez("NAO HA MOVIMENTOS POSSIVEIS PARA A PECA ESCOLHIDA!");
 		}
 	}
-	
+
 	private void validarPosicaoDestino(Posicao origem, Posicao destino) {
-		if(!tabuleiro.peca(origem).movimentosPossiveis(destino)) {
+		if (!tabuleiro.peca(origem).movimentosPossiveis(destino)) {
 			throw new ExcecaoXadrez("HA PECA ESCOLHIDA NAO PODE SE MOVER PARA POSICAO DE DESTINO!");
 		}
 	}

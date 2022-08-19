@@ -18,11 +18,15 @@ public class PrincipalXadrez {
 		while (true) {
 			try {
 				UI.limparTela();
-				UI.printBoard(partidaDeXadrez.getPecas());
+				UI.printTabuleiro(partidaDeXadrez.getPecas());
 				System.out.println();
 				System.out.print("ORIGEM: ");
 				PosicaoXadrez origem = UI.lerPosicaoXadrez(sc);
-
+				
+				boolean[][] movimentosPossiveis = partidaDeXadrez.possiveisMovimentos(origem);
+				UI.limparTela();
+				UI.printTabuleiro(partidaDeXadrez.getPecas(), movimentosPossiveis);
+				
 				System.out.println();
 				System.out.print("DESTINO: ");
 				PosicaoXadrez destino = UI.lerPosicaoXadrez(sc);
