@@ -12,11 +12,23 @@ import xadrez.pecas.Torre;
 
 public class PartidaDeXadrez {
 
+	private int turno;
+	private Cor vezJogador;
 	private Tabuleiro tabuleiro;
 
 	public PartidaDeXadrez() {
 		tabuleiro = new Tabuleiro(8, 8);
+		turno = 1;
+		vezJogador = Cor.BRANCO;
 		initialSetup();
+	}
+	
+	public int getTurno() {
+		return turno;
+	}
+	
+	public Cor getVezJogador() {
+		return vezJogador;
 	}
 
 	public PecaDeXadrez[][] getPecas() {
@@ -85,6 +97,7 @@ public class PartidaDeXadrez {
 		validarPosicaoOrigem(origem);
 		validarPosicaoDestino(origem, destino);
 		Peca capturarPeca = fazerMovimento(origem, destino);
+		proximoTurno();
 		return (PecaDeXadrez) capturarPeca;
 	}
 
@@ -99,6 +112,11 @@ public class PartidaDeXadrez {
 		if (!tabuleiro.existePeca(posicao)) {
 			throw new ExcecaoXadrez("NAO HA PECA NA POSICAO DE ORIGEM!");
 		}
+		
+		if(vezJogador != ((PecaDeXadrez)tabuleiro.peca(posicao)).getCor()) {
+			throw new ExcecaoXadrez("A PECA ESCOLHIDA NAO E SUA!");
+		}
+		
 		if (!tabuleiro.peca(posicao).haAlgumMovimentoPossivel()) {
 			throw new ExcecaoXadrez("NAO HA MOVIMENTOS POSSIVEIS PARA A PECA ESCOLHIDA!");
 		}
@@ -108,5 +126,10 @@ public class PartidaDeXadrez {
 		if (!tabuleiro.peca(origem).movimentosPossiveis(destino)) {
 			throw new ExcecaoXadrez("HA PECA ESCOLHIDA NAO PODE SE MOVER PARA POSICAO DE DESTINO!");
 		}
+	}
+	
+	public void proximoTurno() {
+		turno++;
+		vezJogador = (vezJogador == Cor.BRANCO) ? Cor.PRETO : Cor.BRANCO;
 	}
 }
