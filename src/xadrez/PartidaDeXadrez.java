@@ -92,5 +92,8 @@ public class PartidaDeXadrez {
 		if (!tabuleiro.existePeca(posicao)) {
 			throw new ExcecaoXadrez("NAO HA PECA NA POSICAO DE ORIGEM!");
 		}
+		if(!tabuleiro.peca(posicao).haAlgumMovimentoPossivel()) {
+			throw new ExcecaoXadrez("NAO HA MOVIMENTOS POSSIVEIS PARA A PECA ESCOLHIDA!");
+		}
 	}
 }
