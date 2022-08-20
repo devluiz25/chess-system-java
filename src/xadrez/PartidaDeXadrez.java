@@ -1,5 +1,8 @@
 package xadrez;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -15,6 +18,9 @@ public class PartidaDeXadrez {
 	private int turno;
 	private Cor vezJogador;
 	private Tabuleiro tabuleiro;
+	
+	List<Peca> pecasNoTabuleiro = new ArrayList<>();
+	List<Peca> pecasCapturadas = new ArrayList<>();
 
 	public PartidaDeXadrez() {
 		tabuleiro = new Tabuleiro(8, 8);
@@ -105,6 +111,25 @@ public class PartidaDeXadrez {
 		Peca p = tabuleiro.removerPeca(origem);
 		Peca pecaCapturada = tabuleiro.removerPeca(destino);
 		tabuleiro.localPeca(p, destino);
+		if(pecaCapturada != null) {
+			pecasNoTabuleiro.remove(pecaCapturada);
+			pecasCapturadas.add(pecaCapturada);
+		}
+		return pecaCapturada;
+	}
+	
+	private Peca desfazerMovimento(Posicao origem, Posicao destino, Peca pecaCapturada) {
+		PecaDeXadrez p = (PecaDeXadrez)tabuleiro.removerPeca(destino);
+		p.decrementarContagemMov();
+		tabuleiro.localPeca(p, origem);
+		
+		if(pecaCapturada != null) {
+			tabuleiro.localPeca(pecaCapturada, destino);
+			pecasCapturadas.remove(pecaCapturada);
+			pecasNoTabuleiro.add(pecaCapturada);
+			
+		}
+		
 		return pecaCapturada;
 	}
 
@@ -131,5 +156,10 @@ public class PartidaDeXadrez {
 	public void proximoTurno() {
 		turno++;
 		vezJogador = (vezJogador == Cor.BRANCO) ? Cor.PRETO : Cor.BRANCO;
+	}
+	
+	private void localNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
+		tabuleiro.localPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+		pecasNoTabuleiro.add(peca);
 	}
 }
