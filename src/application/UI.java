@@ -66,6 +66,9 @@ public class UI {
 		System.out.println();
 		System.out.println("TURNO: " + partidaXadrez.getTurno());
 		System.out.println("ESPERANDO JOGADOR: " + partidaXadrez.getVezJogador());
+		if(partidaXadrez.getXeque()) {
+			System.out.println("XEQUE!");
+		}
 	}
 
 	public static void printPeca(PecaDeXadrez peca, boolean background) {
@@ -104,6 +107,7 @@ public class UI {
 		System.out.print(ANSI_WHITE);
 		System.out.println(Arrays.toString(branca.toArray()));
 		System.out.print(ANSI_RESET);
+		System.out.println("PRETAS: ");
 		System.out.print(ANSI_YELLOW);
 		System.out.println(Arrays.toString(preta.toArray()));
 		System.out.print(ANSI_RESET);
