@@ -58,24 +58,30 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	
+
 	public static void printPartida(PartidaDeXadrez partidaXadrez, List<PecaDeXadrez> capturar) {
 		printTabuleiro(partidaXadrez.getPecas());
 		System.out.println();
 		printCapturarPecas(capturar);
 		System.out.println();
 		System.out.println("TURNO: " + partidaXadrez.getTurno());
-		System.out.println("ESPERANDO JOGADOR: " + partidaXadrez.getVezJogador());
-		if(partidaXadrez.getXeque()) {
-			System.out.println("XEQUE!");
+		if (!partidaXadrez.getXequeMate()) {
+			System.out.println("ESPERANDO JOGADOR: " + partidaXadrez.getVezJogador());
+			if (partidaXadrez.getXeque()) {
+				System.out.println("XEQUE!");
+			}
+		}
+		else {
+			System.out.println("XEQUEMATE!");
+			System.out.println("VENCEDOR DA PARTIDA: " + partidaXadrez.getVezJogador());
 		}
 	}
 
 	public static void printPeca(PecaDeXadrez peca, boolean background) {
-		if(background) {
+		if (background) {
 			System.out.print(ANSI_BLUE_BACKGROUND);
 		}
-		
+
 		if (peca == null) {
 			System.out.print("-" + ANSI_RESET);
 		} else {
@@ -87,7 +93,7 @@ public class UI {
 		}
 		System.out.print(" ");
 	}
-	
+
 	public static void printTabuleiro(PecaDeXadrez[][] pecas, boolean[][] movimentosPossiveis) {
 		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -98,9 +104,10 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	
+
 	private static void printCapturarPecas(List<PecaDeXadrez> capturar) {
-		List<PecaDeXadrez> branca = capturar.stream().filter(x -> x.getCor() == Cor.BRANCO).collect(Collectors.toList());
+		List<PecaDeXadrez> branca = capturar.stream().filter(x -> x.getCor() == Cor.BRANCO)
+				.collect(Collectors.toList());
 		List<PecaDeXadrez> preta = capturar.stream().filter(x -> x.getCor() == Cor.PRETO).collect(Collectors.toList());
 		System.out.println("PECAS CAPTURADAS: ");
 		System.out.println("BRANCAS: ");
