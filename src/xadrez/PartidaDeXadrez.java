@@ -68,47 +68,47 @@ public class PartidaDeXadrez {
 		return (cor == Cor.BRANCO) ? Cor.PRETO : Cor.BRANCO;
 	}
 
-	private void novaPosicaoPeca(char coluna, int linha, PecaDeXadrez peca) {
+	private void localNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
 		tabuleiro.localPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
 		pecasNoTabuleiro.add(peca);
 	}
 
 	private void initialSetup() {
 		// PEÇAS BRANCAS
-		novaPosicaoPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('d', 1, new Dama(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('b', 1, new Cavalo(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('g', 1, new Cavalo(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
-		novaPosicaoPeca('a', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('b', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('c', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('d', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('e', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('f', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('g', 2, new Peao(tabuleiro, Cor.BRANCO, this));
-		novaPosicaoPeca('h', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('a', 1, new Torre(tabuleiro, Cor.BRANCO));
+		localNovaPeca('b', 1, new Cavalo(tabuleiro, Cor.BRANCO));
+		localNovaPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
+		localNovaPeca('d', 1, new Dama(tabuleiro, Cor.BRANCO));
+		localNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+		localNovaPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
+		localNovaPeca('g', 1, new Cavalo(tabuleiro, Cor.BRANCO));
+		localNovaPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
+		localNovaPeca('a', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('b', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('c', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('d', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('e', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('f', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('g', 2, new Peao(tabuleiro, Cor.BRANCO, this));
+		localNovaPeca('h', 2, new Peao(tabuleiro, Cor.BRANCO, this));
 
 		// PEÇAS PRETAS
-		novaPosicaoPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('d', 8, new Dama(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('b', 8, new Cavalo(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('g', 8, new Cavalo(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('c', 8, new Bispo(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('f', 8, new Bispo(tabuleiro, Cor.PRETO));
-		novaPosicaoPeca('a', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('b', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('c', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('d', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('e', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('f', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('g', 7, new Peao(tabuleiro, Cor.PRETO, this));
-		novaPosicaoPeca('h', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('a', 8, new Torre(tabuleiro, Cor.PRETO));
+		localNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.PRETO));
+		localNovaPeca('c', 8, new Bispo(tabuleiro, Cor.PRETO));
+		localNovaPeca('d', 8, new Dama(tabuleiro, Cor.PRETO));
+		localNovaPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
+		localNovaPeca('f', 8, new Bispo(tabuleiro, Cor.PRETO));
+		localNovaPeca('g', 8, new Cavalo(tabuleiro, Cor.PRETO));
+		localNovaPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));
+		localNovaPeca('a', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('b', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('c', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('d', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('e', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('f', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('g', 7, new Peao(tabuleiro, Cor.PRETO, this));
+		localNovaPeca('h', 7, new Peao(tabuleiro, Cor.PRETO, this));
 
 	}
 
@@ -193,7 +193,7 @@ public class PartidaDeXadrez {
 		// MOVIMENTO ESPECIAL ANPASSANT
 		if (p instanceof Peao) {
 			if (origem.getColuna() != destino.getColuna() && pecaCapturada == anPassant) {
-				PecaDeXadrez peao = (PecaDeXadrez)tabuleiro.removerPeca(destino);
+				PecaDeXadrez peao = (PecaDeXadrez) tabuleiro.removerPeca(destino);
 				Posicao posicaoPeao;
 				if (p.getCor() == Cor.BRANCO) {
 					posicaoPeao = new Posicao(3, destino.getColuna());
