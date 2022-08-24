@@ -38,6 +38,12 @@ public class PrincipalXadrez {
 				if(pecaCapturada != null) {
 					capturar.add(pecaCapturada);
 				}
+				
+				if(partidaDeXadrez.getPromocao() != null) {
+					System.out.print("INFORME A PECA QUE VOCE QUER PROMOVER PELO PEAO(B/C/T/D): ");
+					String tipo = sc.nextLine();
+					partidaDeXadrez.trocaPecaPromocao(tipo);
+				}
 			} 
 			catch (ExcecaoXadrez e) {
 				System.out.println(e.getMessage());
