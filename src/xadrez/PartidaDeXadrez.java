@@ -79,7 +79,7 @@ public class PartidaDeXadrez {
 		localNovaPeca('b', 1, new Cavalo(tabuleiro, Cor.BRANCO));
 		localNovaPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
 		localNovaPeca('d', 1, new Dama(tabuleiro, Cor.BRANCO));
-		localNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+		localNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO, this));
 		localNovaPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
 		localNovaPeca('g', 1, new Cavalo(tabuleiro, Cor.BRANCO));
 		localNovaPeca('h', 1, new Torre(tabuleiro, Cor.BRANCO));
@@ -97,7 +97,7 @@ public class PartidaDeXadrez {
 		localNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.PRETO));
 		localNovaPeca('c', 8, new Bispo(tabuleiro, Cor.PRETO));
 		localNovaPeca('d', 8, new Dama(tabuleiro, Cor.PRETO));
-		localNovaPeca('e', 8, new Rei(tabuleiro, Cor.PRETO));
+		localNovaPeca('e', 8, new Rei(tabuleiro, Cor.PRETO, this));
 		localNovaPeca('f', 8, new Bispo(tabuleiro, Cor.PRETO));
 		localNovaPeca('g', 8, new Cavalo(tabuleiro, Cor.PRETO));
 		localNovaPeca('h', 8, new Torre(tabuleiro, Cor.PRETO));
@@ -175,7 +175,24 @@ public class PartidaDeXadrez {
 
 			}
 		}
+		// #MOVIMENTO ESPECIAL ROOK
+		// ROOK PEQUENO
+		if (p instanceof Rei && destino.getColuna() == origem.getColuna() + 2) {
+			Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna() + 3);
+			Posicao destinoT = new Posicao(origem.getLinha(), origem.getColuna() + 1);
+			PecaDeXadrez rook = (PecaDeXadrez) tabuleiro.removerPeca(origemT);
+			tabuleiro.localPeca(rook, destinoT);
+			rook.incrementarContagemMov();
+		}
 
+		// ROOK GRANDE
+		if (p instanceof Rei && destino.getColuna() == origem.getColuna() - 2) {
+			Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna() - 4);
+			Posicao destinoT = new Posicao(origem.getLinha(), origem.getColuna() - 1);
+			PecaDeXadrez rook = (PecaDeXadrez) tabuleiro.removerPeca(origemT);
+			tabuleiro.localPeca(rook, destinoT);
+			rook.incrementarContagemMov();
+		}
 		return pecaCapturada;
 	}
 
@@ -202,6 +219,25 @@ public class PartidaDeXadrez {
 				}
 				tabuleiro.localPeca(peao, posicaoPeao);
 			}
+		}
+
+		// #MOVIMENTO ESPECIAL ROOK
+		// ROOK PEQUENO
+		if (p instanceof Rei && destino.getColuna() == origem.getColuna() + 2) {
+			Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna() + 3);
+			Posicao destinoT = new Posicao(origem.getLinha(), origem.getColuna() + 1);
+			PecaDeXadrez rook = (PecaDeXadrez) tabuleiro.removerPeca(destinoT);
+			tabuleiro.localPeca(rook, origemT);
+			rook.decrementarContagemMov();
+		}
+
+		// ROOK GRANDE
+		if (p instanceof Rei && destino.getColuna() == origem.getColuna() - 2) {
+			Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna() - 4);
+			Posicao destinoT = new Posicao(origem.getLinha(), origem.getColuna() - 1);
+			PecaDeXadrez rook = (PecaDeXadrez) tabuleiro.removerPeca(destinoT);
+			tabuleiro.localPeca(rook, origemT);
+			rook.decrementarContagemMov();
 		}
 	}
 
