@@ -95,19 +95,19 @@ public class Rei extends PecaDeXadrez {
 					mat[posicao.getLinha()][posicao.getColuna() + 2] = true;
 				}
 			}
-		}
-		
-		//ROOK GRANDE
-		Posicao posT2 = new Posicao(posicao.getLinha(), posicao.getColuna() - 4);
-		if (testeTorreRook(posT2)) {
-			Posicao p1 = new Posicao(posicao.getLinha(), posicao.getColuna() - 1);
-			Posicao p2 = new Posicao(posicao.getLinha(), posicao.getColuna() - 2);
-			Posicao p3 = new Posicao(posicao.getLinha(), posicao.getColuna() - 3);
-			if (getTabuleiro().peca(p1) == null && getTabuleiro().peca(p2) == null && getTabuleiro().peca(p3) == null) {
-				mat[posicao.getLinha()][posicao.getColuna() - 2] = true;
+
+			// ROOK GRANDE
+			Posicao posT2 = new Posicao(posicao.getLinha(), posicao.getColuna() - 4);
+			if (testeTorreRook(posT2)) {
+				Posicao p1 = new Posicao(posicao.getLinha(), posicao.getColuna() - 1);
+				Posicao p2 = new Posicao(posicao.getLinha(), posicao.getColuna() - 2);
+				Posicao p3 = new Posicao(posicao.getLinha(), posicao.getColuna() - 3);
+				if (getTabuleiro().peca(p1) == null && getTabuleiro().peca(p2) == null
+						&& getTabuleiro().peca(p3) == null) {
+					mat[posicao.getLinha()][posicao.getColuna() - 2] = true;
+				}
 			}
 		}
-
 		return mat;
 	}
 }
