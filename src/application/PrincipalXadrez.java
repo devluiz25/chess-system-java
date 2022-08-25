@@ -41,7 +41,11 @@ public class PrincipalXadrez {
 				
 				if(partidaDeXadrez.getPromocao() != null) {
 					System.out.print("INFORME A PECA QUE VOCE QUER PROMOVER PELO PEAO(B/C/T/D): ");
-					String tipo = sc.nextLine();
+					String tipo = sc.nextLine().toUpperCase();
+					while (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("T") && !tipo.equals("D")) {
+						System.out.print("TIPO DE PECA PARA PROMOCAO INVALIDO! INFORME NOVAMENTE A PECA QUE VOCE QUER TROCAR(B/C/T/R): ");
+						tipo = sc.nextLine().toUpperCase();
+					}
 					partidaDeXadrez.trocaPecaPromocao(tipo);
 				}
 			} 
